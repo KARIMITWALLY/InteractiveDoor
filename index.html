@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Door</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Interactive 3D Door</h1>
+  <model-viewer
+    id="doorModel"
+    src="door_with_button.glb"
+    camera-controls
+    auto-rotate
+    environment-image="neutral"
+    animation-name="Idle">
+  </model-viewer>
+  <div>
+    <button id="openButton">Open Door</button>
+    <button id="closeButton">Close Door</button>
+  </div>
+  <script>
+    const doorModel = document.querySelector('#doorModel');
+
+    document.querySelector('#openButton').addEventListener('click', () => {
+      doorModel.animationName = 'Open';
+    });
+
+    document.querySelector('#closeButton').addEventListener('click', () => {
+      doorModel.animationName = 'Close';
+    });
+  </script>
+</body>
+</html>
